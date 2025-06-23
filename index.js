@@ -11,7 +11,8 @@ const plugincdn={
     "lg-pager":"https://raw.githubusercontent.com/sachinchoolur/lg-pager.js/refs/heads/master/dist/lg-pager.js"
 }
 const pluginlist=Object.keys(plugincdn)
-const genplugin=(config)=>{
+const genplugin=(config={plugins:{}})=>{
+    console.log(config)
     const list={}
     for (let index = 0; index < pluginlist.length; index++) {
         const element = plugincdn[pluginlist[index]];
@@ -28,7 +29,7 @@ const genplugin=(config)=>{
 hexo.config.lightgallery = Object.assign({
     js: 'https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js',
     css: 'https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css',
-    plugins: genplugin(hexo.config.lightgallery),
+    plugins: genplugin(),
 }, hexo.config.lightgallery);
 
 hexo.extend.filter.register('after_post_render',renderer.render,9);
